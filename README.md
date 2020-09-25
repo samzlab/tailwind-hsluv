@@ -59,8 +59,8 @@ module.exports = {
                 step: 100, // default: 100
                 hpluv: false // default: false
             })
-		}
-	}
+        }
+    }
 };
 ```
 
