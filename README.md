@@ -49,9 +49,9 @@ The color name lookup is case-insensitive. You can find the color names in the [
 const { generateColors } = require('tailwind-hsluv');
 
 module.exports = {
-	theme: {
-		extend: {
-			colors: generateColors({
+    theme: {
+        extend: {
+            colors: generateColors({
                 superred: '#ff0000',
                 cobalt: 'Cobalt',
                 mypurple: 'Jacksons Purple'
