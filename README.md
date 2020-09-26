@@ -2,11 +2,18 @@
 
 # HSLuv/HPLuv color space for TailwindCSS
 
-This package is made to experiment with the HSLuv/HPLuv color space which should be better for UI design.
+This package is made to experiment with the HSLuv/HPLuv color space which should be better for UI design. It's technically just a helper function which using the [hsluv](https://github.com/hsluv/hsluv/tree/master/javascript) library to generate the color variants for [TailwindCSS](https://tailwindcss.com/).
 
-It's technically just a helper function which using the [hsluv](https://github.com/hsluv/hsluv/tree/master/javascript) library to generate the color variants for [TailwindCSS](https://tailwindcss.com/).
+## Why?
 
-The difference between **HSL** and **HSLuv**/**HPLuv**/**CIELUV** color spaces is the lightness value based on the human eye instead of how the monitor mixing the colors.
+[Steve Schoger](https://twitter.com/steveschoger) made a beautiful color palette in TailwindCSS, **but**: 
+
+- you can't trust in the lightness variations. Even if the colors are hand-picked, if you use bg-blue-300 and bg-yellow-300 the perceived lightness will be different.
+- the steps between the lightness variations sometimes not even
+
+## How then?
+
+The difference between **HSL** and **HSLuv**/**HPLuv**/**CIELUV** color spaces is the lightness value based on the human eye instead of how the monitor mixing the colors. With **HSLuv** we can generate the color variations based on the perceived lightness.
 
 You can read about these here:
 * [HSLuv comparsion to HSL](https://www.hsluv.org/comparison/)
@@ -64,7 +71,7 @@ module.exports = {
 };
 ```
 
-## Comparsion between the color palettes
+## Comparison between the color palettes
 
 The "text" texts are colored with grayscale `hsl(0, 0%, 10%-90%)` and each of the boxes have a background color lightness variant from 100 to 900.
 
