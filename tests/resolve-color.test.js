@@ -35,4 +35,21 @@ describe('resolve color utility', () => {
 			hex: 'CCCCCC'
 		});
 	});
+
+	test('invalid inputColor value (1234) should throw Error', () => {
+		// @ts-ignore
+		expect(() => resolveColor(1234)).toThrow(Error);
+	});
+
+	test('invalid hex color ("#1234") should throw Error', () => {
+		expect(() => resolveColor('#1234')).toThrow(Error);
+	});
+
+	test('invalid hex color ("#efefka") should throw Error', () => {
+		expect(() => resolveColor('#efefka')).toThrow(Error);
+	});
+
+	test('missing named color ("neverexisted") should throw Error', () => {
+		expect(() => resolveColor('neverexisted')).toThrow(Error);
+	});
 });
