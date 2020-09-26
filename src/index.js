@@ -12,8 +12,12 @@ import { hexFromColorName } from './color-names';
 export function generateSteps(generator, step = 100) {
 	const result = {};
 
+	if (step < 50 || step > 500) {
+		throw Error('step should be between 10 and 500');
+	}
+
 	for (let i = step; i < 1000; i += step) {
-		result[`${i}`] = generator(100 - (i / 10));
+		result[`${i}`] = generator(100 - (i / 10)).toUpperCase();
 	}
 
 	return result;
