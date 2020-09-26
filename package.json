@@ -1,10 +1,12 @@
 {
     "name": "tailwind-hsluv",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "HSLuv/HPLuv color space for TailwindCSS",
     "main": "dist/index-cjs.js",
     "module": "dist/index-esm.js",
+    "types": "src/index.d.ts",
     "repository": {
+        "type" : "git",
         "url": "https://github.com/samzlab/tailwind-hsluv.git"
     },
     "scripts": {
@@ -16,7 +18,7 @@
         "hpluv",
         "color-space"
     ],
-    "author": "Kövesdi György",
+    "author": "Kövesdi György <hello@samzlab.hu>",
     "license": "MIT",
     "dependencies": {
         "hsluv": "0.1.0"
