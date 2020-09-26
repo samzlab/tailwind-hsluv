@@ -1,7 +1,5 @@
 import { hexColor } from "./utils";
 
-import { hexColor } from './utils.d.ts';
-
 export type colorPair = [string, string];
 export type colorNames = Array<colorPair>;
 

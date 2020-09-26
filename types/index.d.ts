@@ -1,6 +1,4 @@
-import { hexColor, rgbColor } from './utils';
-
-import { rgbColor, hexColor, generatorFunction } from './utils.d.ts';
+import { rgbColor, hexColor, generatorFunction } from './utils';
 
 export type colorTuple = [number, number, number];
 
