@@ -1,5 +1,7 @@
 # HSLuv/HPLuv color space for TailwindCSS
 
+![npm](https://img.shields.io/npm/v/tailwind-hsluv)
+
 This package is made to experiment with the HSLuv/HPLuv color space which should be better for UI design. It's technically just a helper function which using the [hsluv](https://github.com/hsluv/hsluv/tree/master/javascript) library to generate the color variants for [TailwindCSS](https://tailwindcss.com/).
 
 
@@ -97,4 +99,14 @@ If the text lightness is closer to the background color lightness you less likel
 
 
 
+
+
 ![image-20200925214453451](assets/image-20200925214453451.png)
+
+
+
+## License
+
+Copyright © 2020 Kövesdi György
+
+Licensed under the [MIT License](https://raw.githubusercontent.com/samzlab/tailwind-hsluv/master/LICENSE).

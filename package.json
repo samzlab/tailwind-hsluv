@@ -10,6 +10,10 @@
     "bugs": {
       "url": "https://github.com/samzlab/tailwind-hsluv/issues"
     },
+    "files": [
+      "dist/index-cjs.js",
+      "dist/index-esm.js"
+    ],
     "scripts": {
         "build": "rollup -c"
     },
@@ -21,10 +25,9 @@
     ],
     "author": "Kövesdi György <hello@samzlab.hu>",
     "license": "MIT",
-    "dependencies": {
-        "hsluv": "0.1.0"
-    },
+    "dependencies": {},
     "devDependencies": {
+        "hsluv": "0.1.0",
         "@koffeine/eslint-config": "16.0.1",
         "@rollup/plugin-commonjs": "15.1.0",
         "@rollup/plugin-node-resolve": "9.0.0",
