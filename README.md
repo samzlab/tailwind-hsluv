@@ -109,4 +109,4 @@ If the text lightness is closer to the background color lightness you less likel
 
 Copyright © 2020 Kövesdi György
 
-Licensed under the [MIT License](https://raw.githubusercontent.com/samzlab/tailwind-hsluv/master/LICENSE).
+Licensed under the [MIT License](https://github.com/samzlab/tailwind-hsluv/blob/master/LICENSE).
