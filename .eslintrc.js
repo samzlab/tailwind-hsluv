@@ -5,10 +5,14 @@ module.exports = {
 	},
 	env: {
 		node: true,
-		es6: true
+		es6: true,
+		'jest/globals': true
 	},
 	extends: [
 		'@koffeine'
+	],
+	plugins: [
+		'jest'
 	],
 	rules: {
 		// override/add rules settings here, such as:

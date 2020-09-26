@@ -8,14 +8,15 @@
     "repository": "github:samzlab/tailwind-hsluv",
     "homepage": "https://github.com/samzlab/tailwind-hsluv",
     "bugs": {
-      "url": "https://github.com/samzlab/tailwind-hsluv/issues"
+        "url": "https://github.com/samzlab/tailwind-hsluv/issues"
     },
     "files": [
-      "dist/index-cjs.js",
-      "dist/index-esm.js"
+        "dist/index-cjs.js",
+        "dist/index-esm.js"
     ],
     "scripts": {
-        "build": "rollup -c"
+        "build": "rollup -c",
+        "test": "rollup -c && jest"
     },
     "keywords": [
         "tailwindcss",
@@ -25,13 +26,20 @@
     ],
     "author": "Kövesdi György <hello@samzlab.hu>",
     "license": "MIT",
-    "dependencies": {},
+    "dependencies": {
+        "hsluv": "0.1.0"
+    },
     "devDependencies": {
-        "hsluv": "0.1.0",
         "@koffeine/eslint-config": "16.0.1",
         "@rollup/plugin-commonjs": "15.1.0",
         "@rollup/plugin-node-resolve": "9.0.0",
+        "@types/jest": "^26.0.14",
         "eslint": "7.9.0",
+        "eslint-plugin-jest": "^24.0.2",
+        "jest": "^26.4.2",
         "rollup": "2.28.2"
+    },
+    "jest": {
+        "rootDir": "tests"
     }
 }
