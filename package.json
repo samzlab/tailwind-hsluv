@@ -1,6 +1,6 @@
 {
     "name": "tailwind-hsluv",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "HSLuv/HPLuv color space for TailwindCSS",
     "main": "dist/index-cjs.js",
     "module": "dist/index-esm.js",
