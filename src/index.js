@@ -1,80 +1,61 @@
-import { hsluvToHex, hpluvToHex } from 'hsluv';
-import colorNames from './color-names';
+import { rgb2hex, hex2rgb, createGenerator } from './utils.js';
+import { hexFromColorName } from './color-names';
 
-/* eslint-disable */
-// based on https://gist.github.com/mjackson/5311256
-function rgbToHsl(r, g, b) {
-	r /= 255, g /= 255, b /= 255;
-
-	let max = Math.max(r, g, b), min = Math.min(r, g, b);
-	let h, s, l = (max + min) / 2;
-
-	if (max == min) {
-		h = s = 0; // achromatic
-	} else {
-		let d = max - min;
-		s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-
-		switch (max) {
-			case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-			case g: h = (b - r) / d + 2; break;
-			case b: h = (r - g) / d + 4; break;
-		}
-
-		h /= 6;
-	}
-
-	return [ h * 360, s * 100, l ];
-}
-/* eslint-enable */
-
-function fromRGB(r, g, b, hpluv = false) {
-	const [ h, s ] = rgbToHsl(r, g, b);
-
-	const method = hpluv ? hpluvToHex : hsluvToHex;
-	return (l) => method([ h, s, l ]);
-}
-
-function generateSteps(getter, step = 100) {
+/**
+ *
+ * Generate color variants by hsluv color generator function for each step evenly
+ *
+ * @param { import('./utils').generatorFunction } generator
+ * @param { number } step
+ *
+ */
+export function generateSteps(generator, step = 100) {
 	const result = {};
 
 	for (let i = step; i < 1000; i += step) {
-		result[`${i}`] = getter(100 - (i / 10));
+		result[`${i}`] = generator(100 - (i / 10));
 	}
 
 	return result;
 }
 
-function hexToRGB(hex) {
-	return hex.match(/.{2}/gu).map((v) => parseInt(v, 16));
-}
+/**
+ *
+ * Generate color variants for TailwindCSS config by color map
+ *
+ * @param colors { import('./index').inputColorsMap }
+ * @param options { import('./index').generateOptions }
+ *
+ */
+export function generateColors(colors, { step = 100, hpluv = false } = {}) {
+	return Object.entries(colors).reduce((result, [ key, /** @type { import('./index').inputColor } */ inputColor ]) => {
+		let rgb;
+		let hex;
 
+		if (Array.isArray(inputColor)) {
 
-function colorFromName(name) {
-	name = name.toLowerCase();
+			rgb = inputColor;
+			hex = rgb2hex(rgb);
 
-	const [ hex ] = colorNames.find(([ , colorName ]) => colorName.toLowerCase() === name) || [];
+		} else if (typeof inputColor === 'string') {
 
-	if (!hex) {
-		throw Error(`color name not found: ${name}`);
-	}
+			if (inputColor.charAt(0) === '#') {
+				hex = inputColor.slice(1);
+			} else {
+				hex = hexFromColorName(inputColor);
+			}
 
-	return hexToRGB(hex);
-}
+			rgb = hex2rgb(hex);
 
-function generateColors(colors, { step = 100, hpluv = false } = {}) {
-	return Object.entries(colors).reduce((result, [ key, colorName ]) => {
-		const color = colorName.charAt(0) === '#' ? hexToRGB(colorName.slice(1)) : colorFromName(colorName);
+		} else {
 
-		result[key] = generateSteps(fromRGB(...color, hpluv), step);
+			throw Error(`Invalid color value: ${inputColor} (expected String or Array instead of ${typeof inputColor})`);
+
+		}
+
+		result[key] = generateSteps(createGenerator(rgb, hpluv), step);
+		result[key].default = `#${hex}`;
+
 		return result;
 	}, {});
 }
-
-
-export {
-	fromRGB,
-	colorFromName,
-	generateSteps,
-	generateColors
-};

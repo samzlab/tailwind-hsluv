@@ -1,4 +1,4 @@
-export default [
+const colorNames = [
 	[ '000000', 'Black' ],
 	[ '000080', 'Navy Blue' ],
 	[ '0000C8', 'Dark Blue' ],
@@ -1566,3 +1566,17 @@ export default [
 	[ 'FFFFF0', 'Ivory' ],
 	[ 'FFFFFF', 'White' ]
 ];
+
+export function hexFromColorName(name) {
+	name = name.toLowerCase();
+
+	const [ hex ] = colorNames.find(([ , colorName ]) => colorName.toLowerCase() === name) || [];
+
+	if (!hex) {
+		throw Error(`color name not found: ${name}`);
+	}
+
+	return hex;
+}
+
+export default colorNames;

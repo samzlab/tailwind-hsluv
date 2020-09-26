@@ -1,36 +1,28 @@
-type hexColor = string;
-type namedColor = string;
-// enum namedColor {
-//     MacaroniAndCheese = "Macaroni and Cheese"
-// };
+import { hexColor, rgbColor } from './utils';
 
-type colorTuple = [number, number, number];
+import { rgbColor, hexColor, generatorFunction } from './utils.d.ts';
 
-interface generateOptions {
+export type colorTuple = [number, number, number];
+
+export interface generateOptions {
     step?: number = 100,
     hpluv?: boolean
 };
 
-type inputColor = hexColor | namedColor;
+export type inputColor = rgbColor | string | hexColor;
 
-interface inputColors {
+export interface inputColorsMap {
     [key: string]: inputColor
 };
 
-type colorVariations = {
+export type colorVariations = {
     [lightness: string]: hexColor
 }
 
-type outputColors = {
-    [key: string]: colorVariations
+export type TailwindColorsConfig = {
+    [color: string]: colorVariations
 }
-
-type generatorFunction = (lightness: number) => hexColor;
-
-export function fromRGB(r: number, g: number, b: number, hpluv?: boolean = false): generatorFunction;
-
-export function colorFromName(name: inputColor): colorTuple;
 
 export function generateSteps(generator: generatorFunction, step: number): colorVariations
 
-export function generateColors(colors: inputColors, options?: generateOptions): outputColors
+export function generateColors(colors: inputColorsMap, options?: generateOptions): TailwindColorsConfig
