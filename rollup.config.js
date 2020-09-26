@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 export default [
 	{
 		input: 'src/index.js',
+		external: 'hsluv',
 		output: {
 			format: 'cjs',
 			file: 'dist/index-cjs.js'
@@ -15,6 +16,7 @@ export default [
 	},
 	{
 		input: 'src/index.js',
+		external: 'hsluv',
 		output: {
 			format: 'esm',
 			file: 'dist/index-esm.js'
