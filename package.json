@@ -1,6 +1,6 @@
 {
     "name": "tailwind-hsluv",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "HSLuv/HPLuv color space for TailwindCSS",
     "main": "dist/index-cjs.js",
     "module": "dist/index-esm.js",
@@ -11,8 +11,8 @@
         "url": "https://github.com/samzlab/tailwind-hsluv/issues"
     },
     "files": [
-        "dist/index-cjs.js",
-        "dist/index-esm.js"
+        "dist/*",
+        "types/*"
     ],
     "scripts": {
         "build": "rollup -c",

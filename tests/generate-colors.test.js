@@ -1,4 +1,4 @@
-const { generateColors } = require('../dist/index-cjs.js');
+const { generateColors } = require('../');
 
 describe('Generate colors', () => {
 
