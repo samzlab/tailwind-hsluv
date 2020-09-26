@@ -2,6 +2,7 @@ import { hsluvToHex, hpluvToHex } from 'hsluv';
 import colorNames from './color-names';
 
 /* eslint-disable */
+// based on https://gist.github.com/mjackson/5311256
 function rgbToHsl(r, g, b) {
 	r /= 255, g /= 255, b /= 255;
 
@@ -25,7 +26,6 @@ function rgbToHsl(r, g, b) {
 
 	return [ h * 360, s * 100, l ];
 }
-
 /* eslint-enable */
 
 function fromRGB(r, g, b, hpluv = false) {
@@ -65,8 +65,6 @@ function colorFromName(name) {
 function generateColors(colors, { step = 100, hpluv = false } = {}) {
 	return Object.entries(colors).reduce((result, [ key, colorName ]) => {
 		const color = colorName.charAt(0) === '#' ? hexToRGB(colorName.slice(1)) : colorFromName(colorName);
-
-		console.log('using hpluv', hpluv);
 
 		result[key] = generateSteps(fromRGB(...color, hpluv), step);
 		return result;
