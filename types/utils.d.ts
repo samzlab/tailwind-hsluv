@@ -11,3 +11,5 @@ export function createGenerator(rgb: rgbColor, hpluv: boolean = false): generato
 export function hex2rgb(hex: hexColor): rgbColor;
 
 export function rgb2hex(rgb: rgbColor): hexColor;
+
+export function normalizeHex(hex: hexColor): hexColor;

@@ -3,7 +3,7 @@ import { hpluvToHex, hsluvToHex } from 'hsluv';
 // based on https://gist.github.com/mjackson/5311256
 /**
  *
- * @param {import('./utils').rgbColor} param0
+ * @param {import('../types/utils').rgbColor} param0
  */
 export function rgbToHsl([ r, g, b ]) {
 	r /= 255;
@@ -36,10 +36,10 @@ export function rgbToHsl([ r, g, b ]) {
 
 /**
  *
- * @param {import('./utils').rgbColor} rgb
+ * @param {import('../types/utils').rgbColor} rgb
  * @param {boolean} hpluv
  *
- * @returns { import('./utils').generatorFunction }
+ * @returns { import('../types/utils').generatorFunction }
  */
 export function createGenerator(rgb, hpluv = false) {
 	const [ hue, saturation ] = rgbToHsl(rgb);
@@ -51,31 +51,49 @@ export function createGenerator(rgb, hpluv = false) {
 /**
  * @param {string} hex
  */
-export function hex2rgb(hex) {
+export function normalizeHex(hex) {
 	/** @type {string[]} */
 	let parts = [];
 	let input = hex;
+
+	hex = hex.toUpperCase();
 
 	if (hex.charAt(0) === '#') {
 		hex = hex.slice(1);
 	}
 
 	if (hex.length === 3) {
-		parts = hex.match(/[0-9a-f]/gui).map((part) => `${part}${part}`);
+		parts = hex.match(/[0-9A-F]/gu).map((part) => `${part}${part}`);
 	} else if (hex.length === 6) {
-		parts = hex.match(/[0-9a-f]{2}/gui);
+		parts = hex.match(/[0-9A-F]{2}/gu);
 	}
 
 	if (parts.length !== 3) {
 		throw Error(`Invalid hex color: ${input}`);
 	}
 
+	return parts.join('');
+}
+
+/**
+ * @param {import('../types/utils').hexColor} hex
+ * @returns {import('../types/utils').rgbColor}
+ */
+export function hex2rgb(hex) {
+	const parts = normalizeHex(hex).match(/[0-9A-F]{2}/gu);
+
+	if (parts.length !== 3) {
+		throw Error(`Invalid hex color: ${hex}`);
+	}
+
+	// @ts-ignore
 	return parts.map((hexValue) => parseInt(hexValue, 16));
 }
 
 /**
- * @param {import('./utils').rgbColor} rgb
+ * @param {import('../types/utils').rgbColor} rgb
+ * @returns {import('../types/utils').hexColor}
  */
 export function rgb2hex(rgb) {
-	return rgb.map((int) => int.toString(16)).join('');
+	return rgb.map((int) => int.toString(16)).join('').toUpperCase();
 }

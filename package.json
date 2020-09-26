@@ -4,7 +4,7 @@
     "description": "HSLuv/HPLuv color space for TailwindCSS",
     "main": "dist/index-cjs.js",
     "module": "dist/index-esm.js",
-    "types": "src/index.d.ts",
+    "types": "types/index.d.ts",
     "repository": "github:samzlab/tailwind-hsluv",
     "homepage": "https://github.com/samzlab/tailwind-hsluv",
     "bugs": {

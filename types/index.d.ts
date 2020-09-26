@@ -23,6 +23,13 @@ export type TailwindColorsConfig = {
     [color: string]: colorVariations
 }
 
+export type colorResult = {
+    rgb: rgbColor,
+    hex: hexColor
+};
+
+export function resolveColor(color: inputColor): colorResult
+
 export function generateSteps(generator: generatorFunction, step: number): colorVariations
 
 export function generateColors(colors: inputColorsMap, options?: generateOptions): TailwindColorsConfig
