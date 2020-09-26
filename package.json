@@ -5,9 +5,10 @@
     "main": "dist/index-cjs.js",
     "module": "dist/index-esm.js",
     "types": "src/index.d.ts",
-    "repository": {
-        "type" : "git",
-        "url": "https://github.com/samzlab/tailwind-hsluv.git"
+    "repository": "github:samzlab/tailwind-hsluv",
+    "homepage": "https://github.com/samzlab/tailwind-hsluv",
+    "bugs": {
+      "url": "https://github.com/samzlab/tailwind-hsluv/issues"
     },
     "scripts": {
         "build": "rollup -c"
