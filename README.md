@@ -4,6 +4,8 @@
 
 This package is made to experiment with the HSLuv/HPLuv color space which should be better for UI design. It's technically just a helper function which using the [hsluv](https://github.com/hsluv/hsluv/tree/master/javascript) library to generate the color variants for [TailwindCSS](https://tailwindcss.com/).
 
+> **NEW**: From 0.1.4 this package is usable as **Tailwind CSS plugin**. 
+
 
 
 ## Why?
@@ -33,7 +35,7 @@ The Color name list came from the [Name that color](http://chir.ag/projects/name
 
 
 
-## Install
+## Installation
 
 ```bash
 npm i tailwind-hsluv
@@ -45,16 +47,40 @@ yarn add tailwind-hsluv
 
 ## Color names
 
-The `generateColors` function accepts colors as string in two possible format: 
+The `generateColors` function accepts colors as `string` or `array`: 
 
-* hex color (#RRGGBB) 
-* or a named color like "Eastern Blue" or "Seaweed", etc. 
+* hex color like `"#RRGGBB"` or `"#CCC"`
+* named color like `"Eastern Blue"` or `"Seaweed"`, etc. *(1)*
+* RGB color array like: `[255, 0, 0]`
 
-The color name lookup is case-insensitive. You can find the color names in the [source](./src/color-names.js) or you can pick one via the [Name that color](http://chir.ag/projects/name-that-color/) website.
+*(1) The color name lookup is case-insensitive. You can find the color names in the [source](./src/color-names.js) or you can pick one via the [Name that color](http://chir.ag/projects/name-that-color/) website.*
 
 
 
-## API
+## Plugin usage
+
+```javascript
+// tailwind.config.js
+const { hsluv } = require('tailwind-hsluv');
+
+module.exports = {
+    // ...your other config...
+    plugins: [
+        hsluv({
+            superred: '#ff0000', // 6 digit hex color
+            grayscale: '#ccc', // / 3 digit hex color
+            blue: [ 0, 0, 255 ], // rgb array
+            green: 'green', // simple named color
+            mypurple: 'Jacksons Purple' // specific named color
+        }),
+        // ...your other plugins...
+    ]
+};
+```
+
+
+
+## API usage
 
 `generateColors(colorMap, options)`: generates the colors for TailwindCSS.
 
@@ -102,6 +128,12 @@ If the text lightness is closer to the background color lightness you less likel
 
 
 ![image-20200925214453451](assets/image-20200925214453451.png)
+
+
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) (since 0.1.4), and  [CHANGELOG-old.md](./CHANGELOG-old.md) (before 0.1.4)
 
 
 
