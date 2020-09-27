@@ -16,7 +16,8 @@
     ],
     "scripts": {
         "build": "rollup -c",
-        "test": "rollup -c && jest"
+        "test": "rollup -c && jest",
+        "release": "rollup -c && standard-version"
     },
     "keywords": [
         "tailwindcss",
@@ -41,7 +42,8 @@
         "eslint": "7.9.0",
         "eslint-plugin-jest": "^24.0.2",
         "jest": "^26.4.2",
-        "rollup": "2.28.2"
+        "rollup": "2.28.2",
+        "standard-version": "^9.0.0"
     },
     "jest": {
         "verbose": true,
