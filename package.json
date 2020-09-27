@@ -17,7 +17,8 @@
     "scripts": {
         "build": "rollup -c",
         "test": "rollup -c && jest",
-        "release": "rollup -c && standard-version"
+        "release": "rollup -c && standard-version",
+        "publish": "git push --follow-tags origin master && npm publish"
     },
     "keywords": [
         "tailwindcss",
