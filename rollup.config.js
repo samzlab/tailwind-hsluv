@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 export default [
 	{
 		input: 'src/index.js',
-		external: 'hsluv',
+		external: [ 'hsluv', 'tailwindcss/plugin' ],
 		output: {
 			format: 'cjs',
 			file: 'dist/index-cjs.js'
@@ -16,7 +16,7 @@ export default [
 	},
 	{
 		input: 'src/index.js',
-		external: 'hsluv',
+		external: [ 'hsluv', 'tailwindcss/plugin' ],
 		output: {
 			format: 'esm',
 			file: 'dist/index-esm.js'

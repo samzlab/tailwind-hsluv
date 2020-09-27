@@ -1,5 +1,6 @@
 import { rgb2hex, hex2rgb, createGenerator, normalizeHex } from './utils.js';
 import { hexFromColorName } from './color-names';
+import plugin from 'tailwindcss/plugin';
 
 /**
  *
@@ -76,4 +77,22 @@ export function generateColors(colors, { step = 100, hpluv = false } = {}) {
 
 		return result;
 	}, {});
+}
+
+/**
+ * @param { import('../types/index').inputColorsMap } colors
+ * @param { import('../types/index').generateOptions } options
+ */
+export function hsluv(colors, options) {
+	return plugin(
+		// eslint-disable-next-line no-empty-function
+		() => {},
+		{
+			theme: {
+				extend: {
+					colors: generateColors(colors, options)
+				}
+			}
+		}
+	);
 }

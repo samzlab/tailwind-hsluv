@@ -30,4 +30,13 @@ export function resolveColor(color: inputColor): colorResult
 
 export function generateSteps(generator: generatorFunction, step: number): colorVariations
 
+
 export function generateColors(colors: inputColorsMap, options?: generateOptions): TailwindColorsConfig
+
+
+export type TailwindPlugin = {
+    handler: function,
+    config: object
+};
+
+export function hsluv(colors: inputColorsMap, options?: generateOptions): TailwindPlugin
