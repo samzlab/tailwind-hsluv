@@ -1,5 +1,6 @@
-import { rgb2hex, hex2rgb, createGenerator, normalizeHex } from './utils.js';
+import { rgb2hex, hex2rgb, createGenerator, normalizeHex } from './utils';
 import { hexFromColorName } from './color-names';
+import assert from 'assert';
 import plugin from 'tailwindcss/plugin';
 
 /**
@@ -10,12 +11,10 @@ import plugin from 'tailwindcss/plugin';
  * @param { number } step
  *
  */
-export function generateSteps(generator, step = 100) {
+export function generateSteps(generator, step) {
 	const result = {};
 
-	if (step < 50 || step > 500) {
-		throw Error('step should be between 10 and 500');
-	}
+	assert(step >= 50 && step <= 500, 'Step parameter must be between 10 and 500');
 
 	for (let i = step; i < 1000; i += step) {
 		result[`${i}`] = generator(100 - (i / 10)).toUpperCase();
@@ -36,12 +35,17 @@ export function resolveColor(color) {
 	/** @type {import('../types/utils').hexColor} */
 	let hex;
 
+	assert(
+		Array.isArray(color) || typeof color === 'string',
+		`Expected String or Array for color value: ${color} (got ${typeof color})`
+	);
+
 	if (Array.isArray(color)) {
 
 		rgb = color;
 		hex = rgb2hex(rgb);
 
-	} else if (typeof color === 'string') {
+	} else { // if (typeof color === 'string') {
 
 		if (color.charAt(0) === '#') {
 			hex = normalizeHex(color);
@@ -50,10 +54,6 @@ export function resolveColor(color) {
 		}
 
 		rgb = hex2rgb(hex);
-
-	} else {
-
-		throw Error(`Invalid color value: ${color} (expected String or Array instead of ${typeof color})`);
 
 	}
 
@@ -83,7 +83,7 @@ export function generateColors(colors, { step = 100, hpluv = false } = {}) {
  * @param { import('../types/index').inputColorsMap } colors
  * @param { import('../types/index').generateOptions } options
  */
-export function hsluv(colors, options) {
+export function hsluv(colors, options = {}) {
 	return plugin(
 		// eslint-disable-next-line no-empty-function
 		() => {},
