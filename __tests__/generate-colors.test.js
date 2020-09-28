@@ -1,4 +1,4 @@
-const { generateColors, resolveColor } = require('../');
+const { generateColors, resolveColor } = require('..');
 
 describe('Generate colors', () => {
 

@@ -1,4 +1,4 @@
-const { resolveColor } = require('../');
+const { resolveColor } = require('..');
 
 describe('resolve color utility', () => {
 	test('by name', () => {
