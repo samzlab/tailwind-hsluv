@@ -1,4 +1,5 @@
-const { resolveColor } = require('..');
+import { resolveColor } from '../src/index';
+import { AssertionError } from 'assert';
 
 describe('resolve color utility', () => {
 	test('by name', () => {
@@ -36,17 +37,17 @@ describe('resolve color utility', () => {
 		});
 	});
 
-	test('invalid inputColor value (1234) should throw Error', () => {
+	test('invalid inputColor value (1234) should throw AssertionError', () => {
 		// @ts-ignore
-		expect(() => resolveColor(1234)).toThrow(Error);
+		expect(() => resolveColor(1234)).toThrow(AssertionError);
 	});
 
-	test('invalid hex color ("#1234") should throw Error', () => {
-		expect(() => resolveColor('#1234')).toThrow(Error);
+	test('invalid hex color ("#1234") should throw AssertionError', () => {
+		expect(() => resolveColor('#1234')).toThrow(AssertionError);
 	});
 
-	test('invalid hex color ("#efefka") should throw Error', () => {
-		expect(() => resolveColor('#efefka')).toThrow(Error);
+	test('invalid hex color ("#efefka") should throw AssertionError', () => {
+		expect(() => resolveColor('#efefka')).toThrow(AssertionError);
 	});
 
 	test('missing named color ("neverexisted") should throw Error', () => {

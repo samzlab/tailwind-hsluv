@@ -1,4 +1,5 @@
-const { generateColors, resolveColor } = require('..');
+import { generateColors, resolveColor } from '../src';
+import { AssertionError } from 'assert';
 
 describe('Generate colors', () => {
 
@@ -22,12 +23,17 @@ describe('Generate colors', () => {
 	test('invalid step values (510, 45) should throw Error', () => {
 		const colorMap = { red: 'red' };
 
-		expect(() => generateColors(colorMap, { step: 510 })).toThrow(Error);
-		expect(() => generateColors(colorMap, { step: 45 })).toThrow(Error);
+		expect(() => generateColors(colorMap, { step: 510 })).toThrow(AssertionError);
+		expect(() => generateColors(colorMap, { step: 45 })).toThrow(AssertionError);
 	});
 
-	test('by name "red"', () => {
+	test('should generate "red" colors', () => {
 		expect(generateColors({ red: 'red' })).toMatchSnapshot();
 	});
+
+	test('should generate HPLuv colors', () => {
+		expect(generateColors({ red: 'red' }, { hpluv: true })).toMatchSnapshot();
+	});
+
 
 });

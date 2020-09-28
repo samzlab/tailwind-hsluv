@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Generate colors by name "red" 1`] = `
+exports[`Generate colors should generate "red" colors 1`] = `
 Object {
   "red": Object {
     "100": "#FFDADA",
@@ -12,6 +12,23 @@ Object {
     "700": "#930000",
     "800": "#690000",
     "900": "#410000",
+    "default": "#FF0000",
+  },
+}
+`;
+
+exports[`Generate colors should generate HPLuv colors 1`] = `
+Object {
+  "red": Object {
+    "100": "#FEDADA",
+    "200": "#FDB4B4",
+    "300": "#E69696",
+    "400": "#C37E7E",
+    "500": "#A16868",
+    "600": "#815252",
+    "700": "#623D3D",
+    "800": "#442929",
+    "900": "#291717",
     "default": "#FF0000",
   },
 }
