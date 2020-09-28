@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generate colors by name "red" 1`] = `
+Object {
+  "red": Object {
+    "100": "#FFDADA",
+    "200": "#FFB3B3",
+    "300": "#FF8888",
+    "400": "#FF5353",
+    "500": "#EF0000",
+    "600": "#C00000",
+    "700": "#930000",
+    "800": "#690000",
+    "900": "#410000",
+    "default": "#FF0000",
+  },
+}
+`;

@@ -1,6 +1,10 @@
-const { generateColors } = require('../');
+const { generateColors, resolveColor } = require('../');
 
 describe('Generate colors', () => {
+
+	test('"red" should resolve to "#ff0000"', () => {
+		expect(resolveColor('red')).toEqual({ hex: 'FF0000', rgb: [ 255, 0, 0 ] });
+	});
 
 	test('color variations has default key', () => {
 		expect(generateColors({
@@ -23,20 +27,7 @@ describe('Generate colors', () => {
 	});
 
 	test('by name "red"', () => {
-		expect(generateColors({ red: 'red' })).toEqual({
-			red: {
-				100: '#FFD9E0',
-				200: '#FFB1C0',
-				300: '#FF86A1',
-				400: '#FF4D81',
-				500: '#EA0064',
-				600: '#BC004F',
-				700: '#90003B',
-				800: '#660028',
-				900: '#3F0016',
-				default: '#FF0000'
-			}
-		});
+		expect(generateColors({ red: 'red' })).toMatchSnapshot();
 	});
 
 });
