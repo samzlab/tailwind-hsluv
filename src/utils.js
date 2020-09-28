@@ -61,5 +61,5 @@ export function hex2rgb(hex) {
  * @returns {import('../types/utils').hexColor}
  */
 export function rgb2hex(rgb) {
-	return rgb.map((int) => int.toString(16)).join('').toUpperCase();
+	return rgb.map((int) => int.toString(16).padStart(2, '0')).join('').toUpperCase();
 }
