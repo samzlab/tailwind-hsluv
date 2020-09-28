@@ -16,9 +16,10 @@
     ],
     "scripts": {
         "build": "rollup -c",
-        "test": "rollup -c && jest",
-        "coverage": "make-coverage-badge",
-        "release": "rollup -c && standard-version",
+        "build:coverage": "make-coverage-badge",
+        "test": "jest",
+        "lint": "eslint src/*.js",
+        "prerelease": "npm run lint && npm test && npm run build:coverage && npm run build && standard-version",
         "push": "git push --follow-tags origin master && npm publish"
     },
     "keywords": [
