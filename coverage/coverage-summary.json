@@ -1,0 +1,3 @@
+{"total": {"lines":{"total":57,"covered":55,"skipped":0,"pct":96.49},"statements":{"total":63,"covered":61,"skipped":0,"pct":96.83},"functions":{"total":17,"covered":15,"skipped":0,"pct":88.24},"branches":{"total":36,"covered":30,"skipped":0,"pct":83.33}}
+,"C:\\Projects\\tailwind-hsluv\\dist\\index-cjs.js": {"lines":{"total":57,"covered":55,"skipped":0,"pct":96.49},"functions":{"total":17,"covered":15,"skipped":0,"pct":88.24},"statements":{"total":63,"covered":61,"skipped":0,"pct":96.83},"branches":{"total":36,"covered":30,"skipped":0,"pct":83.33}}
+}
