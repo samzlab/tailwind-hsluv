@@ -1,6 +1,6 @@
 # HSLuv/HPLuv color space for TailwindCSS
 
-![npm](https://img.shields.io/npm/v/tailwind-hsluv) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)![](./coverage/badge.svg)
+[![npm](https://img.shields.io/npm/v/tailwind-hsluv)](https://www.npmjs.com/package/tailwind-hsluv) ![downloads](https://img.shields.io/npm/dm/tailwind-hsluv) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)![coverage](./coverage/badge.svg) [![MIT License](https://img.shields.io/npm/l/make-coverage-badge.svg)](https://github.com/samzlab/tailwind-hsluv/blob/master/LICENSE)
 
 This package is made to experiment with the HSLuv/HPLuv color space which should be better for UI design. It's technically just a helper function which using the [hsluv](https://github.com/hsluv/hsluv/tree/master/javascript) library to generate the color variants for [TailwindCSS](https://tailwindcss.com/).
 
