@@ -10,7 +10,7 @@ This package is made to experiment with the HSLuv/HPLuv color space which should
 
 ## Why?
 
-[Steve Schoger](https://twitter.com/steveschoger) made a beautiful color palette in TailwindCSS, **but**: 
+[Steve Schoger](https://twitter.com/steveschoger) made a beautiful color palette in Tailwind CSS, **but**: 
 
 - you can't trust in the lightness variations. Even if the colors are hand-picked, if you use bg-blue-300 and bg-yellow-300 the perceived lightness will be different.
 - the steps between the lightness variations sometimes not even
@@ -72,6 +72,9 @@ module.exports = {
             blue: [ 0, 0, 255 ], // rgb array
             green: 'green', // simple named color
             mypurple: 'Jacksons Purple' // specific named color
+        }, {
+            step: 50, // default 100
+            hpluv: false, // use the HPLuv color space, default: false
         }),
         // ...your other plugins...
     ]
@@ -80,16 +83,16 @@ module.exports = {
 
 
 
-## API usage
+## Generate colors directly
 
 `generateColors(colorMap, options)`: generates the colors for TailwindCSS.
 
 **Options:**
 
-| name  | default | description                        |
-| ----- | ------- | ---------------------------------- |
-| step  | `100`   | steps between the lightness values |
-| hpluv | `false` | use a HPLuv color space            |
+| name  | default | description                                |
+| ----- | ------- | ------------------------------------------ |
+| step  | `100`   | steps between the lightness values         |
+| hpluv | `false` | use the HPLuv color space (less saturated) |
 
 **Full example:**
 
@@ -113,6 +116,29 @@ module.exports = {
         }
     }
 };
+```
+
+It will generate an object which usable for tailwind config, like this:
+
+```javascript
+{
+    "red": {
+        "100": "#FFDADA",
+        "200": "#FFB3B3",
+        "300": "#FF8888",
+        "400": "#FF5353",
+        "500": "#EF0000",
+        "600": "#C00000",
+        "700": "#930000",
+        "800": "#690000",
+        "900": "#410000",
+        "default": "#FF0000"
+	},
+    "blue": {
+        // ...
+    },
+    // another colors...
+}
 ```
 
 
