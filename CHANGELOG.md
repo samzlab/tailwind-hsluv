@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/samzlab/tailwind-hsluv/compare/v0.1.6...v0.1.7) (2020-10-03)
+
+
+### Bug Fixes
+
+* pad hex value parts in rgb2hex() ([441432d](https://github.com/samzlab/tailwind-hsluv/commit/441432d05e85b8780a629296b79be07b7662066a))
+
 ### [0.1.6](https://github.com/samzlab/tailwind-hsluv/compare/v0.1.5...v0.1.6) (2020-09-28)
 
 
