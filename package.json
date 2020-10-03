@@ -19,7 +19,8 @@
         "build:coverage": "make-coverage-badge",
         "test": "jest",
         "lint": "eslint src/*.js",
-        "prerelease": "npm run lint && npm test && npm run build:coverage && npm run build && standard-version",
+        "prerelease": "npm run lint && npm test && npm run build:coverage && npm run build",
+        "release": "standard-version",
         "push": "git push --follow-tags origin master && npm publish"
     },
     "keywords": [
